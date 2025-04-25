@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter_bloc/bloc/counter_bloc/counter_bloc.dart';
 import 'package:learn_flutter_bloc/bloc/slider_bloc/slider_bloc.dart';
-import 'package:learn_flutter_bloc/view/counter/counter_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learn_flutter_bloc/view/slider/slider_screen.dart';
 
