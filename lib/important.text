@@ -1,0 +1,4 @@
+1- In Dart, a sealed class is a special kind of abstract class.
+   This means that all possible subclasses of a sealed class must be defined within the same file.
+
+
