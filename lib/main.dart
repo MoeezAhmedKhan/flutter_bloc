@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter_bloc/Utils/image_picker.dart';
 import 'package:learn_flutter_bloc/bloc/counter_bloc/counter_bloc.dart';
+import 'package:learn_flutter_bloc/bloc/image_picker_bloc/image_picker_bloc.dart';
 import 'package:learn_flutter_bloc/bloc/slider_bloc/slider_bloc.dart';
-import 'package:learn_flutter_bloc/view/counter/counter_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:learn_flutter_bloc/view/image_picker/image_picker_screen.dart';
 import 'package:learn_flutter_bloc/view/slider/slider_screen.dart';
 
 void main() {
@@ -12,21 +14,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
-      child: BlocProvider(
-        create: (context) => SliderBloc(),
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: SliderScreen(),
+    return MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => CounterBloc()),
+      BlocProvider(create: (context) => SliderBloc()),
+      BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
+    ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
+        home: ImagePickerScreen(),
       ),
     );
   }
