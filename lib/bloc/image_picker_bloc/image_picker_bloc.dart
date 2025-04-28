@@ -7,19 +7,19 @@ import 'package:learn_flutter_bloc/bloc/image_picker_bloc/image_picker_state.dar
 class ImagePickerBloc extends Bloc<ImagePickerEvent, ImagePickerState> {
 
   // ImagePickerUtils will be pass as dependency injection in this bloc
-  ImagePickerUtils? imagePickerUtils;
+  ImagePickerUtils imagePickerUtils; // declare ImagePickerUtils
   ImagePickerBloc(this.imagePickerUtils) : super(ImagePickerState()){
       on<ImagePickerEventFromCamera>(_catureFromCamera);
       on<ImagePickerEventFromGallery>(_catureFromGallery);
   }
 
   void _catureFromCamera(ImagePickerEventFromCamera event, Emitter<ImagePickerState> emit) async {
-    XFile? file = await imagePickerUtils?.fromCamera();
+    XFile? file = await imagePickerUtils.fromCamera();
     emit(state.copyWith(file: file));
   }
 
   void _catureFromGallery(ImagePickerEventFromGallery event, Emitter<ImagePickerState> emit) async {
-    XFile? file = await imagePickerUtils?.fromGallery();
+    XFile? file = await imagePickerUtils.fromGallery();
     emit(state.copyWith(file: file));
   }
 }

@@ -22,6 +22,10 @@ class ImagePickerScreen extends StatelessWidget {
               state.file == null ? InkWell(onTap: () {
                 context.read<ImagePickerBloc>().add(ImagePickerEventFromCamera());
               },child: const CircleAvatar(minRadius: 45, child: Icon(Icons.camera, size: 65,))) : Image.file(File(state.file!.path.toString())),
+              const SizedBox(height: 40),
+              state.file == null ? InkWell(onTap: () {
+                context.read<ImagePickerBloc>().add(ImagePickerEventFromGallery());
+              },child: const CircleAvatar(minRadius: 45, child: Icon(Icons.file_upload, size: 65,))) : Image.file(File(state.file!.path.toString())),
             ],
           );
         },
