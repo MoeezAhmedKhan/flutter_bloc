@@ -8,11 +8,17 @@ abstract class PostsEvent {}
 class PostsState {
   PostStatus status;
   List<PostsModel> listOfPosts;
-  String errorMesg = "";
+  String errorMesg;
+  List<PostsModel> tempListOfPosts;
 
-  PostsState({this.status = PostStatus.loading, this.listOfPosts = const [], this.errorMesg = ""});
+  String searchMesg;
 
-  PostsState copyWith({PostStatus? status, List<PostsModel>? listOfPosts, String? errorMesg}) {
-    return PostsState(status: status ?? this.status, listOfPosts: listOfPosts ?? this.listOfPosts, errorMesg: errorMesg ?? this.errorMesg);
+
+
+
+  PostsState({this.status = PostStatus.loading, this.listOfPosts = const [], this.errorMesg = "", this.tempListOfPosts = const [], this.searchMesg = ""});
+
+  PostsState copyWith({PostStatus? status, List<PostsModel>? listOfPosts, String? errorMesg, List<PostsModel>? tempListOfPosts, String? searchMesg}) {
+    return PostsState(status: status ?? this.status, listOfPosts: listOfPosts ?? this.listOfPosts, errorMesg: errorMesg ?? this.errorMesg, tempListOfPosts: tempListOfPosts ?? this.tempListOfPosts, searchMesg: searchMesg ?? this.searchMesg);
   }
 }
